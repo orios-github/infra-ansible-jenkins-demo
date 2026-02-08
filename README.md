@@ -16,7 +16,7 @@ This project creates 3 AWS servers with Terraform, which get configured by Ansib
 3. Execute pipeline in Jenkins.
 4. Verify that Nginx is running in the generated IP's.
 
-<img width="724" height="2124" alt="image" src="https://github.com/user-attachments/assets/2f5d8e7a-6576-4d39-b5c8-121a806d249d" />
+<img width="964" height="2364" alt="image" src="https://github.com/user-attachments/assets/ec6cbfa9-71e7-4e3a-bf2b-fdaa0724515a" />
 
 
 ## Project arquitecture
