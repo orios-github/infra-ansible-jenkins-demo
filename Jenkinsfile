@@ -19,13 +19,14 @@ pipeline {
     stage ('Generate Ansible Inventory'){
         steps {
             script {
-                //Get IPs from Terraform in JSON format.
-                def ips = sh(script: "cd infra && terraform output -json web_ips", returnStdout: true).trim()
-                def parsedIps = readJSON text: ips
+              //Get IPs from Terraform in JSON format.
+              def tfOutput = sh(script: 'cd infra && terraform output -json web_ips', returnStdout: true).trim() 
+              def parsed = readJSON text: tfOutput 
 
-                //Create inventory.ini file dinamically.
-                def inventoryContent = parsedIps.value
-                writeFile file: 'ansible/inventory.ini', text: "[web]\n" + inventoryContent.join("\n")
+              //Create inventory.ini file dinamically.
+              def ips = parsed.value.collect { it.toString() } // ✅ force string conversion 
+              def inventory = "[web]\n" + ips.join("\n") + "\n" 
+              writeFile file: 'ansible/inventory.ini', text: inventory
             }
         }
     }
