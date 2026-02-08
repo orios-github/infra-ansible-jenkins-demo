@@ -31,11 +31,14 @@ pipeline {
 
               //Collect values and convert to byte array
               def ips = parsed.value.collect { ip -> new String(ip, "UTF-8") }// Force each IP to be a plain string 
-              def inventory = "[web]\n" + ips.join("\n") + "\n" 
+              def inventory = "[web]\n" + ips.collect { ip -> "${ip} ansible_user=ubuntu ansible_ssh_private_key_file=/var/lib/jenkins/.ssh/jenkins-key.pem ansible_ssh_common_args='-o StrictHostKeyChecking=no'" }.join("\n") + "\n"
 
                //Write to file 
               writeFile file: 'ansible/inventory.ini', text: inventory
               echo "Generated inventory:\n${inventory}"
+
+              
+
             }
         }
     }
