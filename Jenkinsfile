@@ -30,7 +30,7 @@ pipeline {
               def parsed = new JsonSlurper().parseText(tfOutput)
               
               //Create inventory.ini file dinamically.
-              def ips = parsed.value.collect { ip -> ip as String } // Force each IP to be a plain string 
+              def ips = parsed.value.collect { ip -> ip.toString() } // Force each IP to be a plain string 
               
               // Build inventory text 
               def inventory = "[web]\n" + ips.join("\n") + "\n" 
