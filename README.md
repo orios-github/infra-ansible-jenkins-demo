@@ -16,48 +16,8 @@ This project creates 3 AWS servers with Terraform, which get configured by Ansib
 3. Execute pipeline in Jenkins.
 4. Verify that Nginx is running in the generated IP's.
 
+## Project arquitecture
 <img width="964" height="2364" alt="image" src="https://github.com/user-attachments/assets/ec6cbfa9-71e7-4e3a-bf2b-fdaa0724515a" />
 
 
-## Project arquitecture
 
-Complete flow:
-
-+------------------+
-|     Developer    |
-+------------------+
-         |
-         v
-+------------------+
-|   Jenkins CI/CD  |
-+------------------+
-         |
-         v
-+-----------------------------+
-| Stage 1: Terraform          |
-| - Initialize AWS provider   |
-| - Create 3 EC2 instances    |
-| - Export public IPs         |
-+-----------------------------+
-         |
-         v
-+-----------------------------+
-| Stage 2: Ansible Inventory  |![Uploading image.png…]()
-
-| - Get IPs from outputs      |
-| - Generate inventory.ini    |
-+-----------------------------+
-         |
-         v
-+-----------------------------+
-| Stage 3: Ansible Playbook   |
-| - Install Nginx             |
-| - Copy index.html           |
-| - Configure servers         |
-+-----------------------------+
-         |
-         v
-+------------------+
-|    Servers EC2   |
-|   (Nginx active) |
-+------------------+
