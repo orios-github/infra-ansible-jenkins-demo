@@ -1,11 +1,11 @@
 provider "aws" {
-  region = "us-east-1"
+  region = var.region
 }
 
 resource "aws_instance" "web" {
-  count = 3
-  ami = "ami-0c55b159cbfafe1f0" # Ubuntu 20.04 (ejemplo)
-  instance_type = "t2.micro"
+  count = var.server_count
+  ami = "ami-0c55b159cbfafe1f0" # Ubuntu 20.04 (example)
+  instance_type = var.instance_type
 
 
   tags = {
