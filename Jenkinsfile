@@ -27,10 +27,14 @@ pipeline {
             script {
               //Get IPs from Terraform in JSON format.
               def tfOutput = sh(script: 'cd infra && terraform output -json web_ips', returnStdout: true).trim() 
-              def parsed = new JsonSlurper().parseText(tfOutput)
+              def parsed = new groovy.json.JsonSlurper().parseText(tfOutput)
+
+              echo "DEBUG raw: ${parsed.value}" 
+              echo "DEBUG type: ${parsed.value[0].getClass()}" 
+              echo "DEBUG joined: ${parsed.value.join('\n')}"
               
               //Create inventory.ini file dinamically.
-              def ips = parsed.value.collect { ip -> ip.toString() } // Force each IP to be a plain string 
+              def ips = parsed.value.collect { String.valueOf(it) } // Force each IP to be a plain string 
               
               // Build inventory text 
               def inventory = "[web]\n" + ips.join("\n") + "\n" 
