@@ -5,10 +5,10 @@ Generate 3 AWS EC2 servers using Terraform, Ansible to install Nginx and deploy 
 This project creates 3 AWS servers with Terraform, which get configured by Ansible (Nginx Install and Deploys a welcome web page), everything is orchestrated by a Jenkins pipeline.
 
 ##Technologies:
-- Terraform
-- Ansible
-- Jenkins
-- AWS
+- Terraform (Infrastructure as Code)
+- Ansible (Automatic configuration)
+- Jenkins (pipeline CI/CD)
+- AWS (Cloud infrastructure)
 
 ##How to use:
 1. Clone repository.
