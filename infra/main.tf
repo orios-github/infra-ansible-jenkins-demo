@@ -6,7 +6,7 @@ provider "aws" {
 #Resource access to public key
 resource "aws_key_pair" "jenkins_key" {
   key_name   = "jenkins-key"
-  public_key = file("~/.ssh/id_rsa.pub")   #Public Key
+  public_key = file("${path.module}/jenkins-key.pub")   #Public Key
 }
 
 #Resource that creates EC2 instances.
