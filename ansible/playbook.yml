@@ -10,4 +10,4 @@
     - name: Copy welcome page
       copy:
         dest: /var/www/html/index.html    #File path from the server.
-        content: "<h1>Servidor configurado con Ansible</h1>"  #File's content.
+        content: "<h1>Welcome to the server configured with Ansible</h1>"  #File's content.
