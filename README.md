@@ -17,7 +17,7 @@ This project creates 3 AWS servers with Terraform, which get configured by Ansib
 4. Verify that Nginx is running in the generated IP's.
 
 ## Project arquitecture
-<img width="964" height="2364" alt="image" src="https://github.com/user-attachments/assets/ec6cbfa9-71e7-4e3a-bf2b-fdaa0724515a" />
+<img width="482" height="1182" alt="image" src="https://github.com/user-attachments/assets/ec6cbfa9-71e7-4e3a-bf2b-fdaa0724515a" />
 
 
 
