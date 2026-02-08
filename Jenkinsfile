@@ -1,4 +1,8 @@
 import groovy.json.JsonSlurper
+import groovy.json.JsonSlurper
+
+
+
 
 pipeline {
   agent any
@@ -24,11 +28,11 @@ pipeline {
               //Get IPs from Terraform in JSON format.
               def tfOutput = sh(script: 'cd infra && terraform output -json web_ips', returnStdout: true).trim() 
               def parsed = new JsonSlurper().parseText(tfOutput)
-
               //Create inventory.ini file dinamically.
-              def ips = parsed.value.collect { it.toString() } // ✅ force string conversion 
+              def ips = parsed.value
               def inventory = "[web]\n" + ips.join("\n") + "\n" 
               writeFile file: 'ansible/inventory.ini', text: inventory
+              echo "Generated inventory:\n${inventory}"
             }
         }
     }
