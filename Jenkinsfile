@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage('Checkout') { 
       steps { 
-        git branch: 'main', url: 'https://github.com/orios/infra-ansible-jenkins-demo.git' 
+        git branch: 'main', url: 'https://github.com/orios-github/infra-ansible-jenkins-demo.git' 
       } 
     }
     stage('Terraform Init & Apply') {
