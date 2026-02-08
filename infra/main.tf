@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "aws_instance" "web" {
   count = var.server_count
-  ami = "ami-0c55b159cbfafe1f0" # Ubuntu 20.04 (example)
+  ami = var.ami_id 
   instance_type = var.instance_type
 
 
