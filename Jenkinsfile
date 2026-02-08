@@ -24,11 +24,8 @@ pipeline {
                 def parsedIps = readJson text: ips
 
                 //Create inventory.ini file dinamically.
-                def inventoryContent = "[web]\n"
-                for (ip in parsedIps) {
-                    inventorycontent += "${ip}\n"
-                }
-                writeFile file: 'ansible/inventory.ini', text: inventoryContent
+                def inventoryContent = parsedIps.value
+                writeFile file: 'ansible/inventory.ini', text: "[web]\n" + inventoryContent.join("\n")
             }
         }
     }
