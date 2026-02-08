@@ -1,13 +1,13 @@
-- hosts: web
-  become: yes
+- hosts: web          #Applies to all servers of group "web"
+  become: yes         #Execute tasks with admin permissions (sudo)
   tasks:
     - name: Install Nginx
     apt:
-      name: nginx
-      state: present
-      update_cache: yes
+      name: nginx          #Package to install
+      state: present       #Makes sure is installed
+      update_cache: yes    #Update list of packages before installing.
 
     - name: Copy welcome page
       copy:
-        dest: /var/www/html/index.html
-        content: "<h1>Servidor configurado con Ansible</h1>"
+        dest: /var/www/html/index.html    #File path from the server.
+        content: "<h1>Servidor configurado con Ansible</h1>"  #File's content.
