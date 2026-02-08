@@ -21,7 +21,7 @@ pipeline {
             script {
                 //Get IPs from Terraform in JSON format.
                 def ips = sh(script: "cd infra && terraform output -json web_ips", returnStdout: true).trim()
-                def parsedIps = readJson text: ips
+                def parsedIps = readJSON text: ips
 
                 //Create inventory.ini file dinamically.
                 def inventoryContent = parsedIps.value
