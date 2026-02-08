@@ -16,5 +16,5 @@ variable "server_count" {
 #Define AMI (SO Image).
 variable "ami_id" {
   #Ubuntu 24.04 LTS
-  default = "ami-0786adace1541ca80" 
+  default = "ami-0b6c6ebed2801a5cb" 
 }
