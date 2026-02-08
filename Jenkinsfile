@@ -5,6 +5,11 @@ pipeline {
     AWS_SECRET_ACCESS_KEY = credentials('AWS-Secret-Key') 
   }
   stages {
+    stage('Checkout') { 
+      steps { 
+        git branch: 'main', url: 'https://github.com/orios/infra-ansible-jenkins-demo.git' 
+      } 
+    }
     stage('Terraform Init & Apply') {
       steps {
         // Initialize Terraform and create infrastructure in AWS.
