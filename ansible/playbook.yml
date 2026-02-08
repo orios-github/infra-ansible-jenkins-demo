@@ -2,10 +2,10 @@
   become: yes         #Execute tasks with admin permissions (sudo)
   tasks:
     - name: Install Nginx
-    apt:
-      name: nginx          #Package to install
-      state: present       #Makes sure is installed
-      update_cache: yes    #Update list of packages before installing.
+      apt:
+        name: nginx          #Package to install
+        state: present       #Makes sure is installed
+        update_cache: yes    #Update list of packages before installing.
 
     - name: Copy welcome page
       copy:
